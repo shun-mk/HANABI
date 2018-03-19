@@ -1,2 +1,3 @@
 # ClosureUtil
 UIKitのDelegateやDataSoruce
+GesutreRecognizerをClosureで宣言できるようにしたUtilityです

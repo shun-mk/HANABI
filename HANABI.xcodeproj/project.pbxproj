@@ -10,6 +10,9 @@
 		7E4BA56521BF8FF800AD7CDE /* HANABI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4BA55B21BF8FF800AD7CDE /* HANABI.framework */; };
 		7E4BA56A21BF8FF800AD7CDE /* HANABITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4BA56921BF8FF800AD7CDE /* HANABITests.swift */; };
 		7E4BA56C21BF8FF800AD7CDE /* HANABI.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E4BA55E21BF8FF800AD7CDE /* HANABI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7E67875A21C23DD300784E38 /* UIScrollView+ClosureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E67875921C23DD300784E38 /* UIScrollView+ClosureDelegate.swift */; };
+		7EC8B29021BF96490079C12F /* BaseDelegateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC8B28F21BF96490079C12F /* BaseDelegateObject.swift */; };
+		7EC8B29421BFB2140079C12F /* UITableView+ClosureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC8B29321BFB2140079C12F /* UITableView+ClosureDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,9 @@
 		7E4BA56421BF8FF800AD7CDE /* HANABITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HANABITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E4BA56921BF8FF800AD7CDE /* HANABITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HANABITests.swift; sourceTree = "<group>"; };
 		7E4BA56B21BF8FF800AD7CDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E67875921C23DD300784E38 /* UIScrollView+ClosureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+ClosureDelegate.swift"; sourceTree = "<group>"; };
+		7EC8B28F21BF96490079C12F /* BaseDelegateObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDelegateObject.swift; sourceTree = "<group>"; };
+		7EC8B29321BFB2140079C12F /* UITableView+ClosureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+ClosureDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,8 @@
 		7E4BA55D21BF8FF800AD7CDE /* HANABI */ = {
 			isa = PBXGroup;
 			children = (
+				7EC8B29221BFB1E70079C12F /* UIKitExtension */,
+				7EC8B28B21BF90E30079C12F /* Base */,
 				7E4BA55E21BF8FF800AD7CDE /* HANABI.h */,
 				7E4BA55F21BF8FF800AD7CDE /* Info.plist */,
 			);
@@ -84,6 +92,23 @@
 				7E4BA56B21BF8FF800AD7CDE /* Info.plist */,
 			);
 			path = HANABITests;
+			sourceTree = "<group>";
+		};
+		7EC8B28B21BF90E30079C12F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				7EC8B28F21BF96490079C12F /* BaseDelegateObject.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		7EC8B29221BFB1E70079C12F /* UIKitExtension */ = {
+			isa = PBXGroup;
+			children = (
+				7EC8B29321BFB2140079C12F /* UITableView+ClosureDelegate.swift */,
+				7E67875921C23DD300784E38 /* UIScrollView+ClosureDelegate.swift */,
+			);
+			path = UIKitExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +173,7 @@
 				TargetAttributes = {
 					7E4BA55A21BF8FF800AD7CDE = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					7E4BA56321BF8FF800AD7CDE = {
 						CreatedOnToolsVersion = 10.1;
@@ -194,6 +220,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EC8B29421BFB2140079C12F /* UITableView+ClosureDelegate.swift in Sources */,
+				7E67875A21C23DD300784E38 /* UIScrollView+ClosureDelegate.swift in Sources */,
+				7EC8B29021BF96490079C12F /* BaseDelegateObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +370,7 @@
 		7E4BA57021BF8FF800AD7CDE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -357,6 +387,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ShunsakuMIki.HANABI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -365,6 +396,7 @@
 		7E4BA57121BF8FF800AD7CDE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -389,6 +421,7 @@
 		7E4BA57321BF8FF800AD7CDE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = HANABITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -406,6 +439,7 @@
 		7E4BA57421BF8FF800AD7CDE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = HANABITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -1,4 +1,4 @@
-# ClosureUtil
+# HANABI
 ### Overview  
 UIKitのDelegateやDataSoruce  
 GesutreRecognizerをClosureで宣言できるようにしたUtilityです

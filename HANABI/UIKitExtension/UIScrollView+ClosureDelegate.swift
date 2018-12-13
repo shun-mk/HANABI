@@ -1,50 +1,34 @@
 //
-//  UIScrollView+Closure.swift
-//  ClosureUtil
+//  UIScrollView+ClosureDelegate.swift
+//  HANABI
 //
-//  Created by Shunsaku Miki on 2018/03/18.
+//  Created by Shunsaku Miki on 2018/12/13.
 //  Copyright © 2018年 Shunsaku Miki. All rights reserved.
 //
 
 import UIKit
 
-extension UIScrollView {
+public extension UIScrollView {
     
-    ///  Closureを設定
-    ///
-    /// - Parameters:
-    ///   - scrollViewDidScroll:
-    ///   - scrollViewDidZoom:
-    ///   - scrollViewWillBeginDragging:
-    ///   - scrollViewWillEndDragging:
-    ///   - scrollViewDidEndDragging:
-    ///   - scrollViewWillBeginDecelerating:
-    ///   - scrollViewDidEndDecelerating:
-    ///   - scrollViewDidEndScrollingAnimation:
-    ///   - viewForZoomingInScrollView:
-    ///   - scrollViewWillBeginZooming:
-    ///   - scrollViewDidEndZooming:
-    ///   - scrollViewShouldScrollToTop:
-    ///   - scrollViewDidScrollToTop:
-    func setClosureToDelegate(
-        scrollViewDidScroll: ((_ scrollView: UIScrollView) -> ())? = nil,
-        scrollViewDidZoom: ((_ scrollView: UIScrollView) -> ())? = nil,
-        scrollViewWillBeginDragging: ((_ scrollView: UIScrollView) -> ())? = nil,
-        scrollViewWillEndDragging: ((_ scrollView: UIScrollView, _ velocity: CGPoint, _ targetContentOffset: UnsafeMutablePointer<CGPoint>) -> ())? = nil,
-        scrollViewDidEndDragging: ((_ scrollView: UIScrollView, _ decelerate: Bool) -> ())? = nil,
-        scrollViewWillBeginDecelerating: ((_ scrollView: UIScrollView) -> ())? = nil,
-        scrollViewDidEndDecelerating: ((_ scrollView: UIScrollView) -> ())? = nil,
-        scrollViewDidEndScrollingAnimation: ((_ scrollView: UIScrollView) -> ())? = nil,
-        viewForZoomingInScrollView: ((_ scrollView: UIScrollView) -> UIView?)? = nil,
-        scrollViewWillBeginZooming: ((_ scrollView: UIScrollView, _ view: UIView?) -> ())? = nil,
-        scrollViewDidEndZooming: ((_ scrollView: UIScrollView, _ view: UIView?, _ scale: CGFloat) -> ())? = nil,
-        scrollViewShouldScrollToTop: ((_ scrollView: UIScrollView) -> Bool)? = nil,
-        scrollViewDidScrollToTop: ((_ scrollView: UIScrollView) -> ())? = nil
+    func setClosureToScrollViewDelegate(
+        didScroll: ((_ scrollView: UIScrollView) -> ())? = nil,
+        didZoom: ((_ scrollView: UIScrollView) -> ())? = nil,
+        willBeginDragging: ((_ scrollView: UIScrollView) -> ())? = nil,
+        willEndDragging: ((_ scrollView: UIScrollView, _ velocity: CGPoint, _ targetContentOffset: UnsafeMutablePointer<CGPoint>) -> ())? = nil,
+        didEndDragging: ((_ scrollView: UIScrollView, _ decelerate: Bool) -> ())? = nil,
+        willBeginDecelerating: ((_ scrollView: UIScrollView) -> ())? = nil,
+        didEndDecelerating: ((_ scrollView: UIScrollView) -> ())? = nil,
+        didEndScrollingAnimation: ((_ scrollView: UIScrollView) -> ())? = nil,
+        viewForZoomingIn: ((_ scrollView: UIScrollView) -> UIView?)? = nil,
+        willBeginZooming: ((_ scrollView: UIScrollView, _ view: UIView?) -> ())? = nil,
+        didEndZooming: ((_ scrollView: UIScrollView, _ view: UIView?, _ scale: CGFloat) -> ())? = nil,
+        shouldScrollToTop: ((_ scrollView: UIScrollView) -> Bool)? = nil,
+        didScrollToTop: ((_ scrollView: UIScrollView) -> ())? = nil
         ) {
         
         var blocks = [String: AnyObject]()
         
-        if let cls = scrollViewDidScroll {
+        if let cls = didScroll {
             let _scrollViewDidScroll = {(obj: BaseDelegateObject, scrollView: UIScrollView) -> () in
                 return cls(scrollView)
             }
@@ -52,7 +36,7 @@ extension UIScrollView {
                 unsafeBitCast(_scrollViewDidScroll as @convention(block) (BaseDelegateObject, UIScrollView)->(), to: AnyObject.self)
         }
         
-        if let cls = scrollViewDidZoom {
+        if let cls = didZoom {
             let _scrollViewDidZoom = {(obj: BaseDelegateObject, scrollView: UIScrollView) -> () in
                 return cls(scrollView)
             }
@@ -60,7 +44,7 @@ extension UIScrollView {
                 unsafeBitCast(_scrollViewDidZoom as @convention(block) (BaseDelegateObject, UIScrollView)->(), to: AnyObject.self)
         }
         
-        if let cls = scrollViewWillBeginDragging {
+        if let cls = willBeginDragging {
             let _scrollViewWillBeginDragging = {(obj: BaseDelegateObject, scrollView: UIScrollView) -> () in
                 return cls(scrollView)
             }
@@ -68,7 +52,7 @@ extension UIScrollView {
                 unsafeBitCast(_scrollViewWillBeginDragging as @convention(block) (BaseDelegateObject, UIScrollView)->(), to: AnyObject.self)
         }
         
-        if let cls = scrollViewWillEndDragging {
+        if let cls = willEndDragging {
             let _scrollViewWillEndDragging = {(obj: BaseDelegateObject, scrollView: UIScrollView, velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) -> () in
                 return cls(scrollView, velocity, targetContentOffset)
             }
@@ -76,7 +60,7 @@ extension UIScrollView {
                 unsafeBitCast(_scrollViewWillEndDragging as @convention(block) (BaseDelegateObject, UIScrollView, CGPoint, UnsafeMutablePointer<CGPoint>)->(), to: AnyObject.self)
         }
         
-        if let cls = scrollViewDidEndDragging {
+        if let cls = didEndDragging {
             let _scrollViewDidEndDragging = {(obj: BaseDelegateObject, scrollView: UIScrollView, decelerate: Bool) -> () in
                 return cls(scrollView, decelerate)
             }
@@ -84,7 +68,7 @@ extension UIScrollView {
                 unsafeBitCast(_scrollViewDidEndDragging as @convention(block) (BaseDelegateObject, UIScrollView, Bool)->(), to: AnyObject.self)
         }
         
-        if let cls = scrollViewWillBeginDecelerating {
+        if let cls = willBeginDecelerating {
             let _scrollViewWillBeginDecelerating = {(obj: BaseDelegateObject, scrollView: UIScrollView) -> () in
                 return cls(scrollView)
             }
@@ -92,7 +76,7 @@ extension UIScrollView {
                 unsafeBitCast(_scrollViewWillBeginDecelerating as @convention(block) (BaseDelegateObject, UIScrollView)->(), to: AnyObject.self)
         }
         
-        if let cls = scrollViewDidEndDecelerating {
+        if let cls = didEndDecelerating {
             let _scrollViewDidEndDecelerating = {(obj: BaseDelegateObject, scrollView: UIScrollView) -> () in
                 return cls(scrollView)
             }
@@ -100,7 +84,7 @@ extension UIScrollView {
                 unsafeBitCast(_scrollViewDidEndDecelerating as @convention(block) (BaseDelegateObject, UIScrollView)->(), to: AnyObject.self)
         }
         
-        if let cls = scrollViewDidEndScrollingAnimation {
+        if let cls = didEndScrollingAnimation {
             let _scrollViewDidEndScrollingAnimation = {(obj: BaseDelegateObject, scrollView: UIScrollView) -> () in
                 return cls(scrollView)
             }
@@ -108,7 +92,7 @@ extension UIScrollView {
                 unsafeBitCast(_scrollViewDidEndScrollingAnimation as @convention(block) (BaseDelegateObject, UIScrollView)->(), to: AnyObject.self)
         }
         
-        if let cls = viewForZoomingInScrollView {
+        if let cls = viewForZoomingIn {
             let _viewForZoomingInScrollView = {(obj: BaseDelegateObject, scrollView: UIScrollView) -> UIView? in
                 return cls(scrollView)
             }
@@ -116,7 +100,7 @@ extension UIScrollView {
                 unsafeBitCast(_viewForZoomingInScrollView as @convention(block) (BaseDelegateObject, UIScrollView)->UIView?, to: AnyObject.self)
         }
         
-        if let cls = scrollViewWillBeginZooming {
+        if let cls = willBeginZooming {
             let _scrollViewWillBeginZooming = {(obj: BaseDelegateObject, scrollView: UIScrollView, view: UIView?) -> () in
                 return cls(scrollView, view)
             }
@@ -124,7 +108,7 @@ extension UIScrollView {
                 unsafeBitCast(_scrollViewWillBeginZooming as @convention(block) (BaseDelegateObject, UIScrollView, UIView?)->(), to: AnyObject.self)
         }
         
-        if let cls = scrollViewDidEndZooming {
+        if let cls = didEndZooming {
             let _scrollViewDidEndZooming = {(obj: BaseDelegateObject, scrollView: UIScrollView, view: UIView?, scale: CGFloat) -> () in
                 return cls(scrollView, view, scale)
             }
@@ -132,7 +116,7 @@ extension UIScrollView {
                 unsafeBitCast(_scrollViewDidEndZooming as @convention(block) (BaseDelegateObject, UIScrollView, UIView?, CGFloat)->(), to: AnyObject.self)
         }
         
-        if let cls = scrollViewShouldScrollToTop {
+        if let cls = shouldScrollToTop {
             let _scrollViewShouldScrollToTop = {(obj: BaseDelegateObject, scrollView: UIScrollView) -> Bool in
                 return cls(scrollView)
             }
@@ -140,7 +124,7 @@ extension UIScrollView {
                 unsafeBitCast(_scrollViewShouldScrollToTop as @convention(block) (BaseDelegateObject, UIScrollView)->Bool, to: AnyObject.self)
         }
         
-        if let cls = scrollViewDidScrollToTop {
+        if let cls = didScrollToTop {
             let _scrollViewDidScrollToTop = {(obj: BaseDelegateObject, scrollView: UIScrollView) -> () in
                 return cls(scrollView)
             }
@@ -154,8 +138,7 @@ extension UIScrollView {
     /// ClosureをDelegateに設定
     ///
     /// - Parameter blocks:
-    func setClosureToDelegate(scrollDelegate blocks: [String: AnyObject]) {
-        self.delegate =
-            BaseDelegateObject.generate(self, for: UIScrollViewDelegate.self, blocks: blocks) as? UIScrollViewDelegate
+    private func setClosureToDelegate(scrollDelegate blocks: [String: AnyObject]) {
+        self.delegate = BaseDelegateObject.generate(delegateObject: self, proto: UIScrollViewDelegate.self, blocks: blocks) as? UIScrollViewDelegate
     }
 }

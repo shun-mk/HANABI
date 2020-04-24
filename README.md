@@ -1,26 +1,6 @@
 # HANABI
 ### Overview  
-UIKitのDelegateやDataSoruce  
-GesutreRecognizerをClosureで宣言できるようにしたUtilityです
-
-## Example
-### add Tap Action for UIButton
-#### Before
-```
-@IBAction func onTap(_ sender: Any) {
-    print("Hello World")
-}
-```
-#### After
-```
-@IBOutlet weak var button: UIButton! {
-    didSet {
-        GestureRecognizerUtil.addTapGestureRecognizer(to: button, target: self) { gesture in
-            print("Hello World")
-        }
-    }
-}
-```
+UIKitのDelegateやDataSoruceをClosureで宣言できるようにしたUtilityです
 
 ### Set DataSource for UITableView
 #### Before

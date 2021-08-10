@@ -1,6 +1,6 @@
 # HANABI
 ### Overview  
-UIKitのDelegateやDataSoruceをClosureで宣言できるようにしたUtilityです
+UIKitのDelegateやDataSourceをClosureで宣言できるようにしたUtilityです
 
 ### Set DataSource for UITableView
 #### Before
